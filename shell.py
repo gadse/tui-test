@@ -22,7 +22,12 @@ def main(stdscr):
     stdscr.refresh()
     handle_input(stdscr)
 
-    win = curses.newwin(curses.LINES, curses.COLS, 0, curses.COLS // 2)
+    win_height = curses.LINES // 10
+    win_width = curses.COLS
+    win_origin_y = curses.LINES - win_height
+    win_origin_x = 0
+    win = curses.newwin(win_height, win_width, win_origin_y, win_origin_x)
+    # Options are XORed to be combnined!
     win.addstr("Window Opened!", curses.color_pair(1) ^ curses.A_REVERSE)
     win.refresh()
     handle_input(stdscr)
